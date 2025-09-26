@@ -1,0 +1,1096 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="صرافی محمدی - خرید، فروش و تبدیل ارزهای مختلف با بهترین نرخ‌های بازار. حواله پول سریع و مطمئن به سراسر جهان.">
+    <meta name="keywords" content="صرافی, ارز, دلار, یورو, افغانی, حواله پول, تبدیل ارز, صرافی محمدی">
+    <meta name="author" content="صرافی محمدی">
+    <meta property="og:title" content="صرافی محمدی - پلتفرم کامل معاملات ارز">
+    <meta property="og:description" content="خرید، فروش و تبدیل ارزهای مختلف با بهترین نرخ‌های بازار">
+    <meta property="og:type" content="website">
+    <title>صرافی محمدی - پلتفرم کامل معاملات ارز</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'vazir': ['Vazir', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Vazir', sans-serif; 
+            box-sizing: border-box;
+        }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-hero { background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #feca57 100%); }
+        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .card-shadow:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-bounce-slow { animation: bounce 2s infinite; }
+        .loading-spinner { animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo - Right Side -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <svg class="w-10 h-10" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Creative hexagonal shape -->
+                        <path d="M25 2L40 12.5V37.5L25 48L10 37.5V12.5L25 2Z" fill="url(#logoGradient)" stroke="url(#borderGradient)" stroke-width="1.5"/>
+                        
+                        <!-- Inner hexagon -->
+                        <path d="M25 8L35 15V35L25 42L15 35V15L25 8Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                        
+                        <!-- Central M with modern design -->
+                        <g transform="translate(18, 16)">
+                            <path d="M2 18V6L7 12L12 6V18" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <circle cx="2" cy="6" r="1" fill="white"/>
+                            <circle cx="12" cy="6" r="1" fill="white"/>
+                        </g>
+                        
+                        <!-- Money transfer arrows integrated into design -->
+                        <g opacity="0.4">
+                            <!-- Curved transfer path -->
+                            <path d="M12 20Q25 15 38 20" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                            <path d="M12 30Q25 35 38 30" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                            <!-- Arrow heads -->
+                            <path d="M35 18L38 20L35 22" stroke="rgba(255,255,255,0.6)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M15 32L12 30L15 28" stroke="rgba(255,255,255,0.6)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </g>
+                        
+                        <!-- Corner accent points -->
+                        <circle cx="25" cy="6" r="1.2" fill="rgba(255,255,255,0.8)"/>
+                        <circle cx="25" cy="44" r="1.2" fill="rgba(255,255,255,0.8)"/>
+                        <circle cx="12" cy="25" r="1.2" fill="rgba(255,255,255,0.8)"/>
+                        <circle cx="38" cy="25" r="1.2" fill="rgba(255,255,255,0.8)"/>
+                        
+                        <!-- Subtle currency symbols -->
+                        <g opacity="0.25">
+                            <text x="8" y="18" font-size="3.5" fill="white" font-family="serif">$</text>
+                            <text x="39" y="18" font-size="3.5" fill="white" font-family="serif">€</text>
+                            <text x="8" y="36" font-size="3.5" fill="white" font-family="serif">₹</text>
+                            <text x="39" y="36" font-size="3.5" fill="white" font-family="serif">¥</text>
+                        </g>
+                        
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea"/>
+                                <stop offset="30%" style="stop-color:#764ba2"/>
+                                <stop offset="70%" style="stop-color:#f093fb"/>
+                                <stop offset="100%" style="stop-color:#667eea"/>
+                            </linearGradient>
+                            <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff" stop-opacity="0.9"/>
+                                <stop offset="50%" style="stop-color:#ffffff" stop-opacity="0.3"/>
+                                <stop offset="100%" style="stop-color:#ffffff" stop-opacity="0.9"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="text-right">
+                        <h1 class="text-lg font-bold leading-tight">صرافی محمدی</h1>
+                        <p class="text-xs text-purple-200">تبادل ارز</p>
+                    </div>
+                </div>
+
+                <!-- Navigation - Left Side -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <nav class="hidden lg:flex space-x-6 space-x-reverse">
+                        <a href="#home" class="hover:text-purple-200 transition-colors">خانه</a>
+                        <a href="#news" class="hover:text-purple-200 transition-colors">اخبار ارز</a>
+                        <a href="#prices" class="hover:text-purple-200 transition-colors">قیمت‌ها</a>
+                        <a href="#trading" class="hover:text-purple-200 transition-colors">خرید و فروش</a>
+                        <a href="#transfer" class="hover:text-purple-200 transition-colors">حواله پول</a>
+                        <a href="#converter" class="hover:text-purple-200 transition-colors">مبدل ارز</a>
+                        <a href="#contact" class="hover:text-purple-200 transition-colors">تماس</a>
+                    </nav>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="bg-white text-purple-600 p-1.5 rounded-lg hover:bg-purple-50 transition-colors lg:hidden">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-purple-800 border-t border-purple-600">
+            <div class="container mx-auto px-4 py-3">
+                <nav class="space-y-2">
+                    <a href="#home" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">خانه</a>
+                    <a href="#news" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">اخبار ارز</a>
+                    <a href="#prices" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">قیمت‌ها</a>
+                    <a href="#trading" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">خرید و فروش</a>
+                    <a href="#transfer" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">حواله پول</a>
+                    <a href="#converter" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">مبدل ارز</a>
+                    <a href="#contact" onclick="closeMobileMenu()" class="block py-2 px-3 rounded hover:bg-purple-700 transition-colors text-sm">تماس</a>
+                </nav>
+                
+                <!-- WhatsApp Button in Mobile Menu -->
+                <div class="mt-3 pt-3 border-t border-purple-600">
+                    <a href="https://chat.whatsapp.com/EsXpF16YyHoE2lM9YprAaz" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center space-x-2 space-x-reverse w-full justify-center text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"/>
+                        </svg>
+                        <span>تماس با واتساپ</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-hero text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-semibold mb-3 animate-float">صرافی محمدی</h2>
+            <p class="text-base mb-5">خرید، فروش و تبدیل ارزهای مختلف با بهترین نرخ‌های بازار</p>
+            <button onclick="scrollToSection('prices')" class="bg-white text-purple-600 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-all">
+                مشاهده قیمت‌ها
+            </button>
+        </div>
+    </section>
+
+    <!-- Afghanistan Currency News -->
+    <section id="news" class="py-12 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <div class="flex items-center mb-5">
+                        <div class="bg-blue-500 text-white p-2 rounded-full ml-3">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">آخرین اخبار ارز افغانی</h3>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="text-blue-500 ml-2">💱</span>
+                            نرخ حواله بین افغانستان و ایران
+                        </h4>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <p class="text-sm font-semibold text-gray-800 mb-2">نرخ امروز چهارشنبه، مهر ۲ام، ۱۴۰۴</p>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                ارسال حواله از ایران به افغانستان به‌ صورت روزانه و با نرخ دقیق انجام می‌شود. شما می‌ توانید تومان را با بهترین نرخ به افغانی تبدیل کرده و مبلغ مورد نظر را به‌ صورت سریع و مطمئن به افغانستان منتقل کنید.
+                            </p>
+                            <p class="text-gray-700 text-sm mb-4">
+                                برای ارسال حواله (دوستانی که در افغانستان هستند به این شماره واتساپ تماس بگیرند)
+                            </p>
+                            <div class="text-center">
+                                <a href="https://chat.whatsapp.com/EsXpF16YyHoE2lM9YprAaz" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors inline-flex items-center space-x-2 space-x-reverse font-semibold">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"/>
+                                    </svg>
+                                    <span>تماس با واتساپ</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-gray-50 p-4 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 space-x-reverse">
+                                <span class="text-2xl">🇦🇫</span>
+                                <div>
+                                    <p class="font-bold text-gray-800">نرخ فعلی: ۱ دلار = ۷۵ افغانی</p>
+                                    <p class="text-sm text-green-600">تغییر ۲۴ ساعته: +۰.۵ افغانی (+۰.۶۷%)</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-600">بالاترین: ۷۵.۲</p>
+                                <p class="text-sm text-gray-600">پایین‌ترین: ۷۴.۸</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prices Section -->
+    <section id="prices" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">قیمت افغانی به تومان</h3>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl card-shadow overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <!-- Header Row -->
+                            <thead class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                                <tr>
+                                    <th class="px-4 py-3 text-right font-semibold text-sm">توضیحات</th>
+                                    <th class="px-3 py-3 text-center font-semibold text-sm">کمتر از ۳۰ میلیون</th>
+                                    <th class="px-3 py-3 text-center font-semibold text-sm">بیشتر از ۳۰ میلیون</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- Row 1: Afghan to Toman -->
+                                <tr class="bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 transition-all">
+                                    <td class="px-4 py-4 text-right">
+                                        <div class="flex items-center space-x-2 space-x-reverse">
+                                            <span class="text-lg">🇦🇫</span>
+                                            <div>
+                                                <p class="font-semibold text-gray-800 text-sm">افغانی به تومان</p>
+                                                <p class="text-xs text-gray-600">نرخ خرید</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-center">
+                                        <div class="bg-white rounded-lg p-2 shadow-sm">
+                                            <p class="text-lg font-bold text-green-600">۶۱۲</p>
+                                            <p class="text-xs text-gray-500">تومان</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-center">
+                                        <div class="bg-white rounded-lg p-2 shadow-sm">
+                                            <p class="text-lg font-bold text-green-600">۶۱۲</p>
+                                            <p class="text-xs text-gray-500">تومان</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Row 2: Toman to Afghan -->
+                                <tr class="bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 transition-all">
+                                    <td class="px-4 py-4 text-right">
+                                        <div class="flex items-center space-x-2 space-x-reverse">
+                                            <span class="text-lg">🇮🇷</span>
+                                            <div>
+                                                <p class="font-semibold text-gray-800 text-sm">تومان به افغانی</p>
+                                                <p class="text-xs text-gray-600">نرخ فروش</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-center">
+                                        <div class="bg-white rounded-lg p-2 shadow-sm">
+                                            <p class="text-lg font-bold text-blue-600">۶۱۵</p>
+                                            <p class="text-xs text-gray-500">تومان</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-center">
+                                        <div class="bg-white rounded-lg p-2 shadow-sm">
+                                            <p class="text-lg font-bold text-blue-600">۶۱۵</p>
+                                            <p class="text-xs text-gray-500">تومان</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Row 3: Dollar -->
+                                <tr class="bg-gradient-to-r from-yellow-50 to-orange-50 hover:from-yellow-100 hover:to-orange-100 transition-all">
+                                    <td class="px-4 py-4 text-right">
+                                        <div class="flex items-center space-x-2 space-x-reverse">
+                                            <span class="text-lg">🇺🇸</span>
+                                            <div>
+                                                <p class="font-semibold text-gray-800 text-sm">دلار</p>
+                                                <p class="text-xs text-gray-600">نرخ ویژه</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-center">
+                                        <div class="bg-white rounded-lg p-2 shadow-sm">
+                                            <p class="text-lg font-bold text-orange-600">۱۰۵,۰۰۰</p>
+                                            <p class="text-xs text-gray-500">تومان</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-center">
+                                        <div class="bg-white rounded-lg p-2 shadow-sm border-2 border-red-200">
+                                            <p class="text-sm font-bold text-red-600">تماس بگیرید</p>
+                                            <p class="text-xs text-gray-500">نرخ ویژه</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Additional Info -->
+                <div class="mt-6 grid md:grid-cols-3 gap-4">
+                    <div class="bg-gradient-to-r from-green-100 to-emerald-100 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">📈</div>
+                        <h4 class="font-semibold text-gray-800 mb-1 text-sm">نرخ‌های روزانه</h4>
+                        <p class="text-xs text-gray-600">قیمت‌ها هر ساعت بروزرسانی می‌شوند</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">💰</div>
+                        <h4 class="font-semibold text-gray-800 mb-1 text-sm">حداقل معامله</h4>
+                        <p class="text-xs text-gray-600">از ۱۰ میلیون تومان</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">⚡</div>
+                        <h4 class="font-semibold text-gray-800 mb-1 text-sm">تحویل فوری</h4>
+                        <p class="text-xs text-gray-600">در کمتر از ۳۰ دقیقه</p>
+                    </div>
+                </div>
+                
+                <!-- Contact for Rates -->
+                <div class="mt-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-xl text-center">
+                    <h4 class="text-lg font-bold mb-2">برای آخرین نرخ‌ها تماس بگیرید</h4>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a href="tel:+93781234567" class="bg-white text-orange-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-50 transition-colors">
+                            📞 +93-78-123-4567
+                        </a>
+                        <a href="https://chat.whatsapp.com/EsXpF16YyHoE2lM9YprAaz" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-colors">
+                            💬 واتساپ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Section -->
+    <section id="trading" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">خرید و فروش ارز</h3>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Buy Section -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl card-shadow p-8">
+                        <h4 class="text-2xl font-bold mb-6 flex items-center text-gray-800">
+                            <span class="ml-3 text-3xl">📈</span> خرید ارز
+                        </h4>
+                        <form onsubmit="handleBuy(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">ارز مورد نظر</label>
+                                <select id="buyCurrency" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
+                                    <option value="USD">🇺🇸 دلار آمریکا (USD)</option>
+                                    <option value="EUR">🇪🇺 یورو (EUR)</option>
+                                    <option value="AFN">🇦🇫 افغانی (AFN)</option>
+                                    <option value="IRR">🇮🇷 ریال ایران (IRR)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">مقدار</label>
+                                <input type="number" id="buyAmount" placeholder="مقدار مورد نظر" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">قیمت واحد</label>
+                                <input type="text" id="buyPrice" class="w-full p-3 border border-gray-300 rounded-lg bg-gray-50" readonly value="75.00">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">مجموع پرداختی</label>
+                                <input type="text" id="buyTotal" class="w-full p-3 border border-gray-300 rounded-lg bg-gray-50" readonly>
+                            </div>
+                            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                                تأیید خرید
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Sell Section -->
+                    <div class="bg-gradient-to-br from-red-50 to-pink-100 rounded-2xl card-shadow p-8">
+                        <h4 class="text-2xl font-bold mb-6 flex items-center text-gray-800">
+                            <span class="ml-3 text-3xl">📉</span> فروش ارز
+                        </h4>
+                        <form onsubmit="handleSell(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">ارز مورد نظر</label>
+                                <select id="sellCurrency" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
+                                    <option value="USD">🇺🇸 دلار آمریکا (USD)</option>
+                                    <option value="EUR">🇪🇺 یورو (EUR)</option>
+                                    <option value="AFN">🇦🇫 افغانی (AFN)</option>
+                                    <option value="IRR">🇮🇷 ریال ایران (IRR)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">مقدار</label>
+                                <input type="number" id="sellAmount" placeholder="مقدار مورد نظر" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">قیمت واحد</label>
+                                <input type="text" id="sellPrice" class="w-full p-3 border border-gray-300 rounded-lg bg-gray-50" readonly value="74.50">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">مجموع دریافتی</label>
+                                <input type="text" id="sellTotal" class="w-full p-3 border border-gray-300 rounded-lg bg-gray-50" readonly>
+                            </div>
+                            <button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">
+                                تأیید فروش
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Trading Info -->
+                <div class="mt-8 bg-blue-50 rounded-2xl p-6">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="ml-2 text-2xl">ℹ️</span> اطلاعات مهم معاملات
+                    </h4>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-white p-4 rounded-lg">
+                            <h5 class="font-bold text-gray-800 mb-2">⏰ ساعات کاری</h5>
+                            <p class="text-gray-600">شنبه تا پنج‌شنبه: ۸:۰۰ تا ۱۸:۰۰</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h5 class="font-bold text-gray-800 mb-2">💰 حداقل معامله</h5>
+                            <p class="text-gray-600">دلار: ۱۰۰$ | افغانی: ۵,۰۰۰؋</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h5 class="font-bold text-gray-800 mb-2">📞 پشتیبانی</h5>
+                            <p class="text-gray-600">۲۴/۷ از طریق واتساپ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Money Transfer Section -->
+    <section id="transfer" class="py-16 bg-gradient-to-br from-orange-50 to-yellow-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-4 text-gray-800">حواله پول</h3>
+            <p class="text-center text-gray-600 mb-12 text-lg">ارسال سریع و مطمئن پول به سراسر جهان</p>
+            
+            <div class="max-w-6xl mx-auto">
+                <!-- Transfer Rates -->
+                <div class="bg-white rounded-2xl card-shadow p-8 mb-8">
+                    <h4 class="text-2xl font-bold text-center mb-6 text-gray-800 flex items-center justify-center">
+                        <span class="ml-3 text-3xl">💰</span> نرخ‌های حواله
+                    </h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-xl text-center">
+                            <h5 class="text-lg font-bold mb-2">🇺🇸 آمریکا</h5>
+                            <p class="text-2xl font-bold">۷۶ افغانی</p>
+                            <p class="text-sm opacity-90">به ازای هر دلار</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500 to-teal-600 text-white p-6 rounded-xl text-center">
+                            <h5 class="text-lg font-bold mb-2">🇪🇺 اروپا</h5>
+                            <p class="text-2xl font-bold">۸۹ افغانی</p>
+                            <p class="text-sm opacity-90">به ازای هر یورو</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-red-500 to-pink-600 text-white p-6 rounded-xl text-center">
+                            <h5 class="text-lg font-bold mb-2">🇮🇷 ایران</h5>
+                            <p class="text-2xl font-bold">۰.۰۰۱۸ افغانی</p>
+                            <p class="text-sm opacity-90">به ازای هر ریال</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transfer Process Steps -->
+                <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                    <!-- Step 1: Deposit -->
+                    <div class="bg-white rounded-2xl card-shadow p-8">
+                        <div class="text-center mb-6">
+                            <div class="bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">۱</div>
+                            <h4 class="text-xl font-bold text-gray-800">واریز وجه</h4>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-bold text-gray-800 mb-2">اطلاعات حساب:</h5>
+                                <div class="text-sm text-gray-600 space-y-1">
+                                    <p><strong>بانک:</strong> افغانستان بانک</p>
+                                    <p><strong>شماره حساب:</strong> ۱۲۳۴-۵۶۷۸-۹۰۱۲</p>
+                                    <p><strong>نام:</strong> صرافی محمدی</p>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-blue-100 p-4 rounded-lg mb-2">
+                                    <svg class="w-16 h-16 mx-auto text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                                        <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <p class="text-sm font-semibold text-gray-700">فیش واریزی</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Send Documents -->
+                    <div class="bg-white rounded-2xl card-shadow p-8">
+                        <div class="text-center mb-6">
+                            <div class="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">۲</div>
+                            <h4 class="text-xl font-bold text-gray-800">ارسال عکس مدارک</h4>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="text-center">
+                                <div class="bg-green-100 p-3 rounded-lg mb-2">
+                                    <svg class="w-12 h-12 mx-auto text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700">کارت شناسایی</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-green-100 p-3 rounded-lg mb-2">
+                                    <svg class="w-12 h-12 mx-auto text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                                        <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700">کارت بانکی</p>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg text-center">
+                                <p class="text-sm text-gray-700 mb-2">ارسال به واتساپ:</p>
+                                <a href="https://chat.whatsapp.com/EsXpF16YyHoE2lM9YprAaz" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-colors inline-flex items-center">
+                                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"/>
+                                    </svg>
+                                    +93-78-123-4567
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Receive Transfer -->
+                    <div class="bg-white rounded-2xl card-shadow p-8">
+                        <div class="text-center mb-6">
+                            <div class="bg-purple-500 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">۳</div>
+                            <h4 class="text-xl font-bold text-gray-800">دریافت حواله</h4>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-700 leading-relaxed">
+                                    بعد از دریافت مدارک از سوی شما
+                                </p>
+                                <p class="text-sm font-bold text-purple-700 mt-2">
+                                    صرافی محمدی فوراً حواله را ارسال می‌کند.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-700">
+                                    شخص گیرنده بعد از <strong class="text-blue-700">۲ ساعت</strong> می‌تواند حواله را دریافت کند.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-700">
+                                    جزئیات حواله به شماره شما <strong class="text-green-700">پیامک</strong> خواهد شد.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-400">
+                                <p class="text-sm text-gray-700">
+                                    <strong class="text-yellow-700">توجه:</strong> داشتن نمبر حواله و مدرک شناسایی برای دریافت حواله الزامی می‌باشد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transfer Form -->
+                <div class="bg-white rounded-2xl card-shadow p-8">
+                    <h4 class="text-2xl font-bold text-center mb-8 text-gray-800 flex items-center justify-center">
+                        <span class="ml-3 text-3xl">📤</span> فرم ارسال حواله
+                    </h4>
+                    
+                    <form onsubmit="handleTransfer(event)" class="max-w-4xl mx-auto">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Sender Information -->
+                            <div class="space-y-4">
+                                <h5 class="text-lg font-bold text-gray-800 border-b pb-2">اطلاعات فرستنده</h5>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">نام کامل</label>
+                                    <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">شماره تماس</label>
+                                    <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">آدرس</label>
+                                    <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" rows="3" required></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Receiver Information -->
+                            <div class="space-y-4">
+                                <h5 class="text-lg font-bold text-gray-800 border-b pb-2">اطلاعات گیرنده</h5>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">نام کامل</label>
+                                    <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">شماره تماس</label>
+                                    <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">کشور مقصد</label>
+                                    <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" required>
+                                        <option value="">انتخاب کنید</option>
+                                        <option value="USA">🇺🇸 آمریکا</option>
+                                        <option value="EUR">🇪🇺 اروپا</option>
+                                        <option value="IRN">🇮🇷 ایران</option>
+                                        <option value="PAK">🇵🇰 پاکستان</option>
+                                        <option value="IND">🇮🇳 هند</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transfer Amount -->
+                        <div class="mt-6 grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">مبلغ ارسالی</label>
+                                <input type="number" id="transferAmount" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" placeholder="مبلغ" required oninput="calculateTransfer()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">ارز</label>
+                                <select id="transferCurrency" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" onchange="calculateTransfer()">
+                                    <option value="AFN">افغانی (AFN)</option>
+                                    <option value="USD">دلار (USD)</option>
+                                    <option value="EUR">یورو (EUR)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">مبلغ دریافتی</label>
+                                <input type="text" id="receivedAmount" class="w-full p-3 border border-gray-300 rounded-lg bg-gray-50" readonly>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 transition-colors font-semibold text-lg">
+                                ارسال درخواست حواله
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Important Notes -->
+                <div class="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-2xl">
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="ml-2 text-2xl">⚠️</span> نکات مهم
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="space-y-2">
+                            <p>• حداقل مبلغ حواله: ۱۰۰ دلار یا معادل آن</p>
+                            <p>• حداکثر مبلغ حواله: ۱۰,۰۰۰ دلار یا معادل آن</p>
+                            <p>• زمان تحویل: ۲ تا ۲۴ ساعت</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p>• کارمزد: ۲٪ از مبلغ حواله</p>
+                            <p>• مدارک لازم: کارت شناسایی و فیش واریز</p>
+                            <p>• پشتیبانی: ۲۴/۷ از طریق واتساپ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currency Converter -->
+    <section id="converter" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">مبدل ارز</h3>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl card-shadow p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <label class="block text-lg font-bold text-gray-700">از ارز:</label>
+                            <select id="fromCurrency" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                <option value="USD">🇺🇸 دلار آمریکا (USD)</option>
+                                <option value="EUR">🇪🇺 یورو (EUR)</option>
+                                <option value="AFN">🇦🇫 افغانی (AFN)</option>
+                                <option value="IRR">🇮🇷 ریال ایران (IRR)</option>
+                            </select>
+                            <input type="number" id="fromAmount" placeholder="مبلغ را وارد کنید" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" oninput="convertCurrency()">
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-lg font-bold text-gray-700">به ارز:</label>
+                            <select id="toCurrency" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                <option value="AFN">🇦🇫 افغانی (AFN)</option>
+                                <option value="USD">🇺🇸 دلار آمریکا (USD)</option>
+                                <option value="EUR">🇪🇺 یورو (EUR)</option>
+                                <option value="IRR">🇮🇷 ریال ایران (IRR)</option>
+                            </select>
+                            <input type="number" id="toAmount" placeholder="نتیجه تبدیل" class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50" readonly>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button onclick="swapCurrencies()" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                            تعویض ارزها
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">تماس با ما</h3>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-r from-purple-500 to-blue-600 text-white p-8 rounded-2xl">
+                    <h4 class="text-2xl font-bold mb-6">اطلاعات تماس</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-2xl">📞</span>
+                            <span>+93-78-123-4567</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-2xl">📧</span>
+                            <span>mhmdslymmhmdy20@gmail.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-2xl">📍</span>
+                            <span>کابل، افغانستان</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-2xl">🕒</span>
+                            <span>۲۴/۷ پشتیبانی</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">پیام بفرستید</h4>
+                    <form onsubmit="handleContact(event)" class="space-y-4">
+                        <input type="text" placeholder="نام شما" class="w-full p-3 border border-gray-300 rounded-lg" required>
+                        <input type="email" placeholder="ایمیل شما" class="w-full p-3 border border-gray-300 rounded-lg" required>
+                        <textarea placeholder="پیام شما" rows="4" class="w-full p-3 border border-gray-300 rounded-lg" required></textarea>
+                        <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                            ارسال پیام
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Trust Section -->
+    <section class="bg-gradient-to-r from-green-600 to-blue-600 py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-6">
+                <h4 class="text-2xl font-bold text-white mb-2">🔒 امنیت و اعتماد</h4>
+                <p class="text-green-100">صرافی محمدی دارای مجوزهای معتبر و نمادهای امنیتی است</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center items-center gap-3 max-w-5xl mx-auto">
+                <!-- eNamad -->
+                <a href="https://trustseal.enamad.ir/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg p-2 hover:shadow-lg transition-all hover:scale-105 flex items-center space-x-2 space-x-reverse">
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-xs">E</span>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-800">نماد اعتماد</span>
+                </a>
+                
+                <!-- SSL Certificate -->
+                <a href="https://www.ssl.com/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg p-2 hover:shadow-lg transition-all hover:scale-105 flex items-center space-x-2 space-x-reverse">
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-800">گواهی SSL</span>
+                </a>
+                
+                <!-- Bank License -->
+                <a href="https://cbi.ir/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg p-2 hover:shadow-lg transition-all hover:scale-105 flex items-center space-x-2 space-x-reverse">
+                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-800">مجوز بانک مرکزی</span>
+                </a>
+                
+                <!-- Anti Money Laundering -->
+                <a href="https://www.fatf-gafi.org/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg p-2 hover:shadow-lg transition-all hover:scale-105 flex items-center space-x-2 space-x-reverse">
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-0.257-0.257A6 6 0 1118 8zM2 8a6 6 0 1010.257 5.743L12 14l-0.257-0.257A6 6 0 012 8zm8-2a2 2 0 100 4 2 2 0 000-4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-800">ضد پولشویی</span>
+                </a>
+                
+                <!-- ISO Certification -->
+                <a href="https://www.iso.org/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg p-2 hover:shadow-lg transition-all hover:scale-105 flex items-center space-x-2 space-x-reverse">
+                    <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-xs">ISO</span>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-800">گواهی ISO</span>
+                </a>
+                
+                <!-- Digital Security -->
+                <a href="https://www.cybersecurity.gov/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg p-2 hover:shadow-lg transition-all hover:scale-105 flex items-center space-x-2 space-x-reverse">
+                    <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-800">امنیت دیجیتال</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p class="text-green-100 text-sm">
+                    🛡️ تمامی معاملات تحت نظارت بانک مرکزی افغانستان انجام می‌شود
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; ۲۰۲۴ صرافی محمدی. تمامی حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <a href="https://chat.whatsapp.com/EsXpF16YyHoE2lM9YprAaz" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center" style="box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.4), 0 10px 10px -5px rgba(34, 197, 94, 0.3);">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"/>
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        // Exchange rates
+        const exchangeRates = {
+            USD: { EUR: 0.85, AFN: 75, IRR: 42000 },
+            EUR: { USD: 1.18, AFN: 88.5, IRR: 49560 },
+            AFN: { USD: 0.0133, EUR: 0.0113, IRR: 560 },
+            IRR: { USD: 0.000024, EUR: 0.00002, AFN: 0.00179 }
+        };
+
+        // Currency conversion
+        function convertCurrency() {
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+            const fromAmount = parseFloat(document.getElementById('fromAmount').value);
+
+            if (!fromAmount || fromAmount <= 0) {
+                document.getElementById('toAmount').value = '';
+                return;
+            }
+
+            if (fromCurrency === toCurrency) {
+                document.getElementById('toAmount').value = fromAmount.toFixed(2);
+                return;
+            }
+
+            const rate = exchangeRates[fromCurrency][toCurrency];
+            const result = fromAmount * rate;
+            document.getElementById('toAmount').value = result.toFixed(2);
+        }
+
+        function swapCurrencies() {
+            const fromSelect = document.getElementById('fromCurrency');
+            const toSelect = document.getElementById('toCurrency');
+            const fromAmount = document.getElementById('fromAmount');
+            const toAmount = document.getElementById('toAmount');
+
+            const tempCurrency = fromSelect.value;
+            fromSelect.value = toSelect.value;
+            toSelect.value = tempCurrency;
+
+            const tempAmount = fromAmount.value;
+            fromAmount.value = toAmount.value;
+            toAmount.value = tempAmount;
+
+            convertCurrency();
+        }
+
+        // Trading functions
+        function handleBuy(event) {
+            event.preventDefault();
+            const currency = document.getElementById('buyCurrency').value;
+            const amount = parseFloat(document.getElementById('buyAmount').value);
+            
+            if (!amount || amount <= 0) {
+                alert('لطفاً مقدار معتبری وارد کنید.');
+                return;
+            }
+            
+            if (amount < 100) {
+                alert('حداقل مبلغ معامله ۱۰۰ واحد می‌باشد.');
+                return;
+            }
+            
+            // Show loading
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.innerHTML = '<div class="loading-spinner w-5 h-5 border-2 border-white border-t-transparent rounded-full mx-auto"></div>';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert(`خرید ${amount} ${currency} با موفقیت ثبت شد! لطفاً برای تکمیل معامله با واتساپ تماس بگیرید.`);
+                document.getElementById('buyAmount').value = '';
+                document.getElementById('buyTotal').value = '';
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 1500);
+        }
+
+        function handleSell(event) {
+            event.preventDefault();
+            const currency = document.getElementById('sellCurrency').value;
+            const amount = parseFloat(document.getElementById('sellAmount').value);
+            
+            if (!amount || amount <= 0) {
+                alert('لطفاً مقدار معتبری وارد کنید.');
+                return;
+            }
+            
+            if (amount < 100) {
+                alert('حداقل مبلغ معامله ۱۰۰ واحد می‌باشد.');
+                return;
+            }
+            
+            // Show loading
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.innerHTML = '<div class="loading-spinner w-5 h-5 border-2 border-white border-t-transparent rounded-full mx-auto"></div>';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert(`فروش ${amount} ${currency} با موفقیت ثبت شد! لطفاً برای تکمیل معامله با واتساپ تماس بگیرید.`);
+                document.getElementById('sellAmount').value = '';
+                document.getElementById('sellTotal').value = '';
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 1500);
+        }
+
+        // Calculate totals for trading
+        function updateBuyTotal() {
+            const amount = parseFloat(document.getElementById('buyAmount').value) || 0;
+            const price = parseFloat(document.getElementById('buyPrice').value) || 0;
+            document.getElementById('buyTotal').value = (amount * price).toFixed(2);
+        }
+
+        function updateSellTotal() {
+            const amount = parseFloat(document.getElementById('sellAmount').value) || 0;
+            const price = parseFloat(document.getElementById('sellPrice').value) || 0;
+            document.getElementById('sellTotal').value = (amount * price).toFixed(2);
+        }
+
+        function handleContact(event) {
+            event.preventDefault();
+            alert('پیام شما با موفقیت ارسال شد!');
+        }
+
+        // Transfer functions
+        function handleTransfer(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const transferData = {
+                senderName: event.target.querySelector('input[type="text"]').value,
+                senderPhone: event.target.querySelector('input[type="tel"]').value,
+                senderAddress: event.target.querySelector('textarea').value,
+                receiverName: event.target.querySelectorAll('input[type="text"]')[1].value,
+                receiverPhone: event.target.querySelectorAll('input[type="tel"]')[1].value,
+                destinationCountry: event.target.querySelector('select').value,
+                amount: document.getElementById('transferAmount').value,
+                currency: document.getElementById('transferCurrency').value,
+                receivedAmount: document.getElementById('receivedAmount').value
+            };
+            
+            // Create WhatsApp message
+            const message = `🔄 *درخواست حواله جدید*\n\n` +
+                          `👤 *اطلاعات فرستنده:*\n` +
+                          `نام: ${transferData.senderName}\n` +
+                          `تلفن: ${transferData.senderPhone}\n` +
+                          `آدرس: ${transferData.senderAddress}\n\n` +
+                          `👥 *اطلاعات گیرنده:*\n` +
+                          `نام: ${transferData.receiverName}\n` +
+                          `تلفن: ${transferData.receiverPhone}\n` +
+                          `کشور مقصد: ${transferData.destinationCountry}\n\n` +
+                          `💰 *جزئیات حواله:*\n` +
+                          `مبلغ ارسالی: ${transferData.amount} ${transferData.currency}\n` +
+                          `مبلغ دریافتی: ${transferData.receivedAmount}\n\n` +
+                          `📅 تاریخ درخواست: ${new Date().toLocaleDateString('fa-IR')}\n` +
+                          `🕐 ساعت درخواست: ${new Date().toLocaleTimeString('fa-IR')}`;
+            
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://chat.whatsapp.com/EsXpF16YyHoE2lM9YprAaz`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            alert('درخواست حواله شما آماده شد! در حال انتقال به واتساپ برای ارسال به مدیر...');
+            
+            // Reset form
+            event.target.reset();
+            document.getElementById('receivedAmount').value = '';
+        }
+
+        function calculateTransfer() {
+            const amount = parseFloat(document.getElementById('transferAmount').value) || 0;
+            const currency = document.getElementById('transferCurrency').value;
+            
+            if (amount <= 0) {
+                document.getElementById('receivedAmount').value = '';
+                return;
+            }
+
+            let rate = 1;
+            if (currency === 'USD') rate = 75;
+            else if (currency === 'EUR') rate = 88.5;
+            
+            const received = amount * rate;
+            const fee = received * 0.02; // 2% fee
+            const final = received - fee;
+            
+            document.getElementById('receivedAmount').value = final.toFixed(2) + ' افغانی';
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerHeight = 80; // Account for fixed header
+                const elementPosition = element.offsetTop - headerHeight;
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Currency converter
+            document.getElementById('fromAmount').addEventListener('input', convertCurrency);
+            document.getElementById('fromCurrency').addEventListener('change', convertCurrency);
+            document.getElementById('toCurrency').addEventListener('change', convertCurrency);
+            
+            // Trading calculators
+            document.getElementById('buyAmount').addEventListener('input', updateBuyTotal);
+            document.getElementById('sellAmount').addEventListener('input', updateSellTotal);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9851666264c5a7a8',t:'MTc1ODg3NTQzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
